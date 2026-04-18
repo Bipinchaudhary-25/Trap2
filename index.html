@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Trap 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #ffe6ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #ff4d88;
+}
+
+.btn-container {
+  position: relative;
+  height: 130px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* YES BUTTON PREMIUM STYLE */
+#yes {
+  background: linear-gradient(45deg, #ff4d88, #ff7aa8);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 77, 136, 0.4);
+}
+
+/* NO BUTTON */
+#no {
+  position: absolute;
+  background: #eee;
+}
+
+/* teasing text */
+.tease {
+  margin-top: 15px;
+  color: #888;
+  font-size: 14px;
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="mainCard">
+  <h2>Gunjan, will you be my girlfriend? 💖</h2>
+
+  <div class="btn-container">
+    <button id="yes">Yes ✨💖</button>
+    <button id="no">No 🙈</button>
+  </div>
+
+  <div class="tease" id="teaseText">Just say Yes already! 🥺</div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const tease = document.getElementById("teaseText");
+
+const messages = [
+  "Haha, nice try! 😜",
+  "Missed me 😏",
+  "You can't escape love 💘",
+  "The No button has trust issues 😂",
+  "Just say Yes already! 🥺",
+  "बस Yes ही करना पड़ेगा ❤️",
+  "Try harder 😂"
+];
+
+function moveBtn() {
+  noBtn.style.left = Math.random() * 250 + "px";
+  noBtn.style.top = Math.random() * 100 + "px";
+  tease.innerText = messages[Math.floor(Math.random() * messages.length)];
+}
+
+noBtn.addEventListener("mouseover", moveBtn);
+noBtn.addEventListener("touchstart", moveBtn);
+
+// 👉 YAHAN APNE PINTEREST GIF LINKS DAALO
+const images = [
+  "Img1.gif",
+  "Img2.gif",
+  "Img3.gif",
+  "Img4.gif"
+];
+
+let index = 0;
+
+// YES CLICK
+document.getElementById("yes").addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#ffe6ec;">
+      
+      <div style="background:#f8f8f8;padding:20px;border-radius:20px;width:90%;max-width:350px;text-align:center;">
+        
+        <h2 style="color:#ff4d88;">Yayy! You said YES! 💖</h2>
+        <p style="color:gray;">Knew you'd say yes 😏</p>
+
+        <img id="slideshow" src="${images[0]}"
+             style="width:100%;border-radius:12px;margin-top:10px;">
+
+      </div>
+    </div>
+  `;
+
+  startSlideshow();
+  startHearts();
+});
+
+// 🔥 AUTO CHANGE GIF
+function startSlideshow() {
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    document.getElementById("slideshow").src = images[index];
+  }, 1500);
+}
+
+// ❤️ hearts same
+function startHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.bottom = "0px";
+    heart.style.fontSize = "20px";
+    heart.style.animation = "float 3s linear";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }, 300);
+}
+
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes float {
+  0% {transform: translateY(0); opacity:1;}
+  100% {transform: translateY(-600px); opacity:0;}
+}`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html> 
+
